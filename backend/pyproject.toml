@@ -1,0 +1,29 @@
+[project]
+name = "facetrack-backend"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+filterwarnings = [
+    # Aviso interno del TestClient de Starlette (dependencia), no de FaceTrack.
+    "ignore:The anyio.abc.BlockingPortal alias is deprecated:DeprecationWarning",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["alembic/versions"]
+
+[tool.ruff.lint]
+# E/W: estilo, F: errores (imports sin usar, nombres indefinidos), I: orden de
+# imports, B: bugs comunes, UP: sintaxis moderna, S: seguridad (bandit), SIM: simplificaciones.
+select = ["E", "W", "F", "I", "B", "UP", "S", "SIM"]
+ignore = [
+    "S101",  # assert en tests
+    "B008",  # Depends()/File() en defaults: es el patrón de FastAPI
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S105", "S106", "S311", "E501"]

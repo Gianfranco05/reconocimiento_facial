@@ -1,0 +1,66 @@
+# FaceTrack completo: PostgreSQL + backend (FastAPI) + frontend (nginx).
+#
+#   docker compose up -d --build
+#   docker compose exec backend python -m app.cli.users create admin --role admin
+#   → http://localhost:8080
+#
+# Los secretos (EMBEDDING_ENCRYPTION_KEY, SECRET_KEY, POSTGRES_PASSWORD) se
+# leen de .env, que nunca se versiona. Ver README, sección Docker.
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: facetrack-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: facetrack
+    ports:
+      # Solo para desarrollo y tests locales (5433 para no chocar con un
+      # PostgreSQL instalado en 5432). Ligado a 127.0.0.1: no se expone a la red.
+      - "127.0.0.1:${POSTGRES_HOST_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d facetrack"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: facetrack-backend
+    container_name: facetrack-backend
+    env_file: .env
+    environment:
+      # Dentro de la red de Docker la base es "postgres:5432" (no localhost:5433).
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/facetrack
+      # production: cookie Secure y SECRET_KEY obligatoria. Los navegadores
+      # aceptan cookies Secure en http://localhost; en otra máquina hace falta HTTPS.
+      # Variable propia: ENVIRONMENT de .env es para correr el backend localmente.
+      ENVIRONMENT: ${DOCKER_ENVIRONMENT:-production}
+      CORS_ORIGINS: ${PUBLIC_ORIGIN:-http://localhost:8080}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Sin "ports": el backend solo es accesible a través del frontend (nginx).
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    image: facetrack-frontend
+    container_name: facetrack-frontend
+    ports:
+      - "${FRONTEND_PORT:-8080}:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

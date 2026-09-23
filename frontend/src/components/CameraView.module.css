@@ -1,0 +1,97 @@
+/*
+ * El contenedor adopta la proporción del vídeo (el <video> no se recorta), así
+ * las cajas se posicionan con porcentajes sobre la imagen real.
+ */
+
+.frame {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  background: #0b1120;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mirrored {
+  transform: scaleX(-1);
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  aspect-ratio: 16 / 9;
+  color: #94a3b8;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.box {
+  position: absolute;
+  border: 3px solid;
+  border-radius: var(--radius-sm);
+  transition: all 0.12s linear;
+}
+
+.known {
+  border-color: #22c55e;
+  --tag-bg: #15803d;
+}
+
+.unknown {
+  border-color: #ef4444;
+  --tag-bg: #b91c1c;
+}
+
+.invalid {
+  border-color: #94a3b8;
+  border-style: dashed;
+  --tag-bg: #475569;
+}
+
+.tag {
+  position: absolute;
+  left: -3px;
+  bottom: 100%;
+  display: flex;
+  gap: var(--space-2);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: var(--tag-bg);
+  color: #fff;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.point {
+  fill: #38bdf8;
+  opacity: 0.85;
+}
+
+.banner {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-4);
+  transform: translateX(-50%);
+  padding: var(--space-2) var(--space-5);
+  border-radius: 999px;
+  background: rgb(15 23 42 / 0.8);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}

@@ -1,0 +1,3262 @@
+{
+  "components": {
+    "schemas": {
+      "ActivityOut": {
+        "properties": {
+          "confidence": {
+            "title": "Confidence",
+            "type": "number"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "person_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Person Id"
+          },
+          "person_name": {
+            "title": "Person Name",
+            "type": "string"
+          },
+          "recognized": {
+            "title": "Recognized",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "created_at",
+          "person_id",
+          "person_name",
+          "recognized",
+          "confidence"
+        ],
+        "title": "ActivityOut",
+        "type": "object"
+      },
+      "AttendanceMarkOut": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/AttendanceType"
+          }
+        },
+        "required": [
+          "type",
+          "created_at"
+        ],
+        "title": "AttendanceMarkOut",
+        "type": "object"
+      },
+      "AttendanceOut": {
+        "properties": {
+          "confidence": {
+            "title": "Confidence",
+            "type": "number"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "person_id": {
+            "format": "uuid",
+            "title": "Person Id",
+            "type": "string"
+          },
+          "person_name": {
+            "title": "Person Name",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/AttendanceType"
+          }
+        },
+        "required": [
+          "id",
+          "person_id",
+          "person_name",
+          "type",
+          "confidence",
+          "created_at"
+        ],
+        "title": "AttendanceOut",
+        "type": "object"
+      },
+      "AttendancePage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AttendanceOut"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total",
+          "items"
+        ],
+        "title": "AttendancePage",
+        "type": "object"
+      },
+      "AttendanceType": {
+        "enum": [
+          "ENTRY",
+          "EXIT"
+        ],
+        "title": "AttendanceType",
+        "type": "string"
+      },
+      "Body_enroll_face_api_personas__person_id__faces_post": {
+        "properties": {
+          "image": {
+            "contentMediaType": "application/octet-stream",
+            "description": "Foto con exactamente un rostro (JPEG, PNG, WebP o BMP)",
+            "title": "Image",
+            "type": "string"
+          }
+        },
+        "required": [
+          "image"
+        ],
+        "title": "Body_enroll_face_api_personas__person_id__faces_post",
+        "type": "object"
+      },
+      "Body_landmarks_api_landmarks_image_post": {
+        "properties": {
+          "image": {
+            "contentMediaType": "application/octet-stream",
+            "title": "Image",
+            "type": "string"
+          },
+          "include_points": {
+            "default": true,
+            "description": "Incluir los 478 puntos de cada rostro",
+            "title": "Include Points",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "image"
+        ],
+        "title": "Body_landmarks_api_landmarks_image_post",
+        "type": "object"
+      },
+      "Body_recognize_image_api_reconocimiento_image_post": {
+        "properties": {
+          "camera_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9_.\\-]+$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Camera Id"
+          },
+          "image": {
+            "contentMediaType": "application/octet-stream",
+            "description": "Imagen o frame de cámara (JPEG, PNG, WebP o BMP)",
+            "title": "Image",
+            "type": "string"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/RecognitionMode",
+            "default": "recognition"
+          }
+        },
+        "required": [
+          "image"
+        ],
+        "title": "Body_recognize_image_api_reconocimiento_image_post",
+        "type": "object"
+      },
+      "Body_submit_frame_api_liveness_sessions__session_id__frames_post": {
+        "properties": {
+          "image": {
+            "contentMediaType": "application/octet-stream",
+            "title": "Image",
+            "type": "string"
+          },
+          "include_points": {
+            "default": false,
+            "title": "Include Points",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "image"
+        ],
+        "title": "Body_submit_frame_api_liveness_sessions__session_id__frames_post",
+        "type": "object"
+      },
+      "BoundingBoxOut": {
+        "properties": {
+          "height": {
+            "title": "Height",
+            "type": "integer"
+          },
+          "width": {
+            "title": "Width",
+            "type": "integer"
+          },
+          "x": {
+            "title": "X",
+            "type": "integer"
+          },
+          "y": {
+            "title": "Y",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "width",
+          "height"
+        ],
+        "title": "BoundingBoxOut",
+        "type": "object"
+      },
+      "Challenge": {
+        "enum": [
+          "BLINK",
+          "TURN_LEFT",
+          "TURN_RIGHT",
+          "LOOK_UP"
+        ],
+        "title": "Challenge",
+        "type": "string"
+      },
+      "ChallengeOut": {
+        "properties": {
+          "completed": {
+            "title": "Completed",
+            "type": "boolean"
+          },
+          "instruction": {
+            "title": "Instruction",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/Challenge"
+          }
+        },
+        "required": [
+          "type",
+          "instruction",
+          "completed"
+        ],
+        "title": "ChallengeOut",
+        "type": "object"
+      },
+      "ConfigOut": {
+        "additionalProperties": false,
+        "properties": {
+          "attendance_min_interval_minutes": {
+            "maximum": 1440.0,
+            "minimum": 0.0,
+            "title": "Attendance Min Interval Minutes",
+            "type": "integer"
+          },
+          "camera_fps": {
+            "maximum": 30.0,
+            "minimum": 1.0,
+            "title": "Camera Fps",
+            "type": "integer"
+          },
+          "camera_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.\\-]+$",
+            "title": "Camera Id",
+            "type": "string"
+          },
+          "face_recognition_threshold": {
+            "maximum": 1.0,
+            "minimum": 0.2,
+            "title": "Face Recognition Threshold",
+            "type": "number"
+          },
+          "max_faces": {
+            "maximum": 50.0,
+            "minimum": 1.0,
+            "title": "Max Faces",
+            "type": "integer"
+          },
+          "model_version": {
+            "title": "Model Version",
+            "type": "string"
+          },
+          "privacy": {
+            "$ref": "#/components/schemas/PrivacyOut",
+            "default": {
+              "embeddings_encrypted": true,
+              "local_processing": true,
+              "save_images": false,
+              "save_video": false
+            }
+          },
+          "recognition_cooldown_seconds": {
+            "maximum": 3600.0,
+            "minimum": 0.0,
+            "title": "Recognition Cooldown Seconds",
+            "type": "integer"
+          },
+          "save_events": {
+            "title": "Save Events",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "face_recognition_threshold",
+          "recognition_cooldown_seconds",
+          "attendance_min_interval_minutes",
+          "camera_fps",
+          "max_faces",
+          "camera_id",
+          "save_events",
+          "model_version"
+        ],
+        "title": "ConfigOut",
+        "type": "object"
+      },
+      "DailyCountOut": {
+        "properties": {
+          "date": {
+            "format": "date",
+            "title": "Date",
+            "type": "string"
+          },
+          "entries": {
+            "title": "Entries",
+            "type": "integer"
+          },
+          "exits": {
+            "title": "Exits",
+            "type": "integer"
+          },
+          "recognized": {
+            "title": "Recognized",
+            "type": "integer"
+          },
+          "unknown": {
+            "title": "Unknown",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "date",
+          "recognized",
+          "unknown",
+          "entries",
+          "exits"
+        ],
+        "title": "DailyCountOut",
+        "type": "object"
+      },
+      "ErrorOut": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          }
+        },
+        "required": [
+          "detail",
+          "code"
+        ],
+        "title": "ErrorOut",
+        "type": "object"
+      },
+      "EventOut": {
+        "properties": {
+          "camera_id": {
+            "title": "Camera Id",
+            "type": "string"
+          },
+          "confidence": {
+            "title": "Confidence",
+            "type": "number"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "distance": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "person_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Person Id"
+          },
+          "person_name": {
+            "title": "Person Name",
+            "type": "string"
+          },
+          "recognized": {
+            "title": "Recognized",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "person_id",
+          "person_name",
+          "recognized",
+          "confidence",
+          "distance",
+          "camera_id",
+          "created_at"
+        ],
+        "title": "EventOut",
+        "type": "object"
+      },
+      "EventPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/EventOut"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total",
+          "items"
+        ],
+        "title": "EventPage",
+        "type": "object"
+      },
+      "EyesOut": {
+        "properties": {
+          "left_blink_score": {
+            "title": "Left Blink Score",
+            "type": "number"
+          },
+          "left_ear": {
+            "title": "Left Ear",
+            "type": "number"
+          },
+          "right_blink_score": {
+            "title": "Right Blink Score",
+            "type": "number"
+          },
+          "right_ear": {
+            "title": "Right Ear",
+            "type": "number"
+          }
+        },
+        "required": [
+          "left_ear",
+          "right_ear",
+          "left_blink_score",
+          "right_blink_score"
+        ],
+        "title": "EyesOut",
+        "type": "object"
+      },
+      "FaceEnrollmentOut": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "face_count": {
+            "title": "Face Count",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "model_version": {
+            "title": "Model Version",
+            "type": "string"
+          },
+          "person_id": {
+            "format": "uuid",
+            "title": "Person Id",
+            "type": "string"
+          },
+          "quality": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FaceQualityOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "model_version",
+          "created_at",
+          "person_id",
+          "quality",
+          "face_count"
+        ],
+        "title": "FaceEnrollmentOut",
+        "type": "object"
+      },
+      "FaceLandmarksOut": {
+        "properties": {
+          "bbox": {
+            "$ref": "#/components/schemas/BoundingBoxOut"
+          },
+          "eyes": {
+            "$ref": "#/components/schemas/EyesOut"
+          },
+          "head_pose": {
+            "$ref": "#/components/schemas/HeadPoseOut"
+          },
+          "points": {
+            "default": [],
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "title": "Points",
+            "type": "array"
+          }
+        },
+        "required": [
+          "bbox",
+          "head_pose",
+          "eyes"
+        ],
+        "title": "FaceLandmarksOut",
+        "type": "object"
+      },
+      "FaceQualityOut": {
+        "properties": {
+          "brightness": {
+            "title": "Brightness",
+            "type": "number"
+          },
+          "detection_score": {
+            "title": "Detection Score",
+            "type": "number"
+          },
+          "face_size": {
+            "title": "Face Size",
+            "type": "integer"
+          },
+          "sharpness": {
+            "title": "Sharpness",
+            "type": "number"
+          }
+        },
+        "required": [
+          "face_size",
+          "detection_score",
+          "sharpness",
+          "brightness"
+        ],
+        "title": "FaceQualityOut",
+        "type": "object"
+      },
+      "FaceResultOut": {
+        "properties": {
+          "attendance": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AttendanceMarkOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "bbox": {
+            "$ref": "#/components/schemas/BoundingBoxOut"
+          },
+          "confidence": {
+            "title": "Confidence",
+            "type": "number"
+          },
+          "distance": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "person_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Person Id"
+          },
+          "recognized": {
+            "title": "Recognized",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "recognized",
+          "person_id",
+          "name",
+          "confidence",
+          "distance",
+          "bbox"
+        ],
+        "title": "FaceResultOut",
+        "type": "object"
+      },
+      "FaceSampleOut": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "model_version": {
+            "title": "Model Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "model_version",
+          "created_at"
+        ],
+        "title": "FaceSampleOut",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "HeadPoseOut": {
+        "properties": {
+          "pitch": {
+            "description": "Grados; > 0 = la persona mira hacia arriba",
+            "title": "Pitch",
+            "type": "number"
+          },
+          "roll": {
+            "description": "Grados; > 0 = rotación antihoraria en la imagen",
+            "title": "Roll",
+            "type": "number"
+          },
+          "yaw": {
+            "description": "Grados; > 0 = la persona gira hacia su derecha",
+            "title": "Yaw",
+            "type": "number"
+          }
+        },
+        "required": [
+          "yaw",
+          "pitch",
+          "roll"
+        ],
+        "title": "HeadPoseOut",
+        "type": "object"
+      },
+      "HealthOut": {
+        "description": "Público (lo usan los healthchecks): no expone datos de personas.",
+        "properties": {
+          "database": {
+            "title": "Database",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "database"
+        ],
+        "title": "HealthOut",
+        "type": "object"
+      },
+      "LandmarksOut": {
+        "properties": {
+          "faces": {
+            "items": {
+              "$ref": "#/components/schemas/FaceLandmarksOut"
+            },
+            "title": "Faces",
+            "type": "array"
+          },
+          "faces_detected": {
+            "title": "Faces Detected",
+            "type": "integer"
+          },
+          "image_height": {
+            "title": "Image Height",
+            "type": "integer"
+          },
+          "image_width": {
+            "title": "Image Width",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "faces_detected",
+          "image_width",
+          "image_height",
+          "faces"
+        ],
+        "title": "LandmarksOut",
+        "type": "object"
+      },
+      "LivenessCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "camera_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9_.\\-]+$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Camera Id"
+          },
+          "register_attendance": {
+            "default": false,
+            "title": "Register Attendance",
+            "type": "boolean"
+          }
+        },
+        "title": "LivenessCreate",
+        "type": "object"
+      },
+      "LivenessFrameOut": {
+        "properties": {
+          "ear": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ear"
+          },
+          "face_detected": {
+            "title": "Face Detected",
+            "type": "boolean"
+          },
+          "head_pose": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HeadPoseOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "image_height": {
+            "title": "Image Height",
+            "type": "integer"
+          },
+          "image_width": {
+            "title": "Image Width",
+            "type": "integer"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "points": {
+            "default": [],
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "title": "Points",
+            "type": "array"
+          },
+          "session": {
+            "$ref": "#/components/schemas/LivenessSessionOut"
+          }
+        },
+        "required": [
+          "session",
+          "face_detected",
+          "message",
+          "head_pose",
+          "ear",
+          "image_width",
+          "image_height"
+        ],
+        "title": "LivenessFrameOut",
+        "type": "object"
+      },
+      "LivenessPersonOut": {
+        "properties": {
+          "confidence": {
+            "title": "Confidence",
+            "type": "number"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "person_id": {
+            "format": "uuid",
+            "title": "Person Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "person_id",
+          "name",
+          "confidence"
+        ],
+        "title": "LivenessPersonOut",
+        "type": "object"
+      },
+      "LivenessSessionOut": {
+        "properties": {
+          "attendance": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AttendanceMarkOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "challenges": {
+            "items": {
+              "$ref": "#/components/schemas/ChallengeOut"
+            },
+            "title": "Challenges",
+            "type": "array"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "current_instruction": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current Instruction"
+          },
+          "disclaimer": {
+            "default": "Prueba de vida básica por desafíos: detecta fotos estáticas, pero no es un mecanismo de seguridad biométrica de alta garantía (un vídeo o una máscara pueden superarla).",
+            "title": "Disclaimer",
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "person": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LivenessPersonOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "status": {
+            "$ref": "#/components/schemas/LivenessStatus"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "reason",
+          "challenges",
+          "current_instruction",
+          "created_at",
+          "expires_at",
+          "person",
+          "attendance"
+        ],
+        "title": "LivenessSessionOut",
+        "type": "object"
+      },
+      "LivenessStatus": {
+        "enum": [
+          "IN_PROGRESS",
+          "LIVE",
+          "SUSPICIOUS",
+          "UNKNOWN"
+        ],
+        "title": "LivenessStatus",
+        "type": "string"
+      },
+      "LoginIn": {
+        "additionalProperties": false,
+        "properties": {
+          "password": {
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Password",
+            "type": "string"
+          },
+          "username": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Username",
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "LoginIn",
+        "type": "object"
+      },
+      "PersonCountOut": {
+        "properties": {
+          "average_confidence": {
+            "title": "Average Confidence",
+            "type": "number"
+          },
+          "person_id": {
+            "format": "uuid",
+            "title": "Person Id",
+            "type": "string"
+          },
+          "person_name": {
+            "title": "Person Name",
+            "type": "string"
+          },
+          "recognitions": {
+            "title": "Recognitions",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "person_id",
+          "person_name",
+          "recognitions",
+          "average_confidence"
+        ],
+        "title": "PersonCountOut",
+        "type": "object"
+      },
+      "PersonCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "maxLength": 254,
+                "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "first_name": {
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "First Name",
+            "type": "string"
+          },
+          "last_name": {
+            "default": "",
+            "maxLength": 100,
+            "title": "Last Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "first_name"
+        ],
+        "title": "PersonCreate",
+        "type": "object"
+      },
+      "PersonOut": {
+        "properties": {
+          "active": {
+            "title": "Active",
+            "type": "boolean"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "face_count": {
+            "title": "Face Count",
+            "type": "integer"
+          },
+          "first_name": {
+            "title": "First Name",
+            "type": "string"
+          },
+          "full_name": {
+            "title": "Full Name",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_name": {
+            "title": "Last Name",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "first_name",
+          "last_name",
+          "full_name",
+          "email",
+          "active",
+          "face_count",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "PersonOut",
+        "type": "object"
+      },
+      "PersonUpdate": {
+        "additionalProperties": false,
+        "description": "Solo se modifican los campos enviados.",
+        "properties": {
+          "active": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "maxLength": 254,
+                "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "first_name": {
+            "anyOf": [
+              {
+                "maxLength": 100,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Name"
+          },
+          "last_name": {
+            "anyOf": [
+              {
+                "maxLength": 100,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Name"
+          }
+        },
+        "title": "PersonUpdate",
+        "type": "object"
+      },
+      "PrivacyOut": {
+        "description": "Garantías fijas de privacidad. No son configurables: el sistema no tiene\nningún código que guarde imágenes o vídeo, ni envía datos fuera del equipo.",
+        "properties": {
+          "embeddings_encrypted": {
+            "default": true,
+            "title": "Embeddings Encrypted",
+            "type": "boolean"
+          },
+          "local_processing": {
+            "default": true,
+            "title": "Local Processing",
+            "type": "boolean"
+          },
+          "save_images": {
+            "default": false,
+            "title": "Save Images",
+            "type": "boolean"
+          },
+          "save_video": {
+            "default": false,
+            "title": "Save Video",
+            "type": "boolean"
+          }
+        },
+        "title": "PrivacyOut",
+        "type": "object"
+      },
+      "RecognitionMode": {
+        "enum": [
+          "recognition",
+          "attendance"
+        ],
+        "title": "RecognitionMode",
+        "type": "string"
+      },
+      "RecognitionOut": {
+        "properties": {
+          "events_recorded": {
+            "title": "Events Recorded",
+            "type": "integer"
+          },
+          "faces_detected": {
+            "title": "Faces Detected",
+            "type": "integer"
+          },
+          "image_height": {
+            "title": "Image Height",
+            "type": "integer"
+          },
+          "image_width": {
+            "title": "Image Width",
+            "type": "integer"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/FaceResultOut"
+            },
+            "title": "Results",
+            "type": "array"
+          }
+        },
+        "required": [
+          "faces_detected",
+          "image_width",
+          "image_height",
+          "events_recorded",
+          "results"
+        ],
+        "title": "RecognitionOut",
+        "type": "object"
+      },
+      "RuntimeConfig": {
+        "additionalProperties": false,
+        "properties": {
+          "attendance_min_interval_minutes": {
+            "maximum": 1440.0,
+            "minimum": 0.0,
+            "title": "Attendance Min Interval Minutes",
+            "type": "integer"
+          },
+          "camera_fps": {
+            "maximum": 30.0,
+            "minimum": 1.0,
+            "title": "Camera Fps",
+            "type": "integer"
+          },
+          "camera_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.\\-]+$",
+            "title": "Camera Id",
+            "type": "string"
+          },
+          "face_recognition_threshold": {
+            "maximum": 1.0,
+            "minimum": 0.2,
+            "title": "Face Recognition Threshold",
+            "type": "number"
+          },
+          "max_faces": {
+            "maximum": 50.0,
+            "minimum": 1.0,
+            "title": "Max Faces",
+            "type": "integer"
+          },
+          "recognition_cooldown_seconds": {
+            "maximum": 3600.0,
+            "minimum": 0.0,
+            "title": "Recognition Cooldown Seconds",
+            "type": "integer"
+          },
+          "save_events": {
+            "title": "Save Events",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "face_recognition_threshold",
+          "recognition_cooldown_seconds",
+          "attendance_min_interval_minutes",
+          "camera_fps",
+          "max_faces",
+          "camera_id",
+          "save_events"
+        ],
+        "title": "RuntimeConfig",
+        "type": "object"
+      },
+      "StatisticsOut": {
+        "properties": {
+          "average_confidence": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Average Confidence"
+          },
+          "by_day": {
+            "items": {
+              "$ref": "#/components/schemas/DailyCountOut"
+            },
+            "title": "By Day",
+            "type": "array"
+          },
+          "by_person": {
+            "items": {
+              "$ref": "#/components/schemas/PersonCountOut"
+            },
+            "title": "By Person",
+            "type": "array"
+          },
+          "date_from": {
+            "format": "date",
+            "title": "Date From",
+            "type": "string"
+          },
+          "date_to": {
+            "format": "date",
+            "title": "Date To",
+            "type": "string"
+          },
+          "entries": {
+            "title": "Entries",
+            "type": "integer"
+          },
+          "exits": {
+            "title": "Exits",
+            "type": "integer"
+          },
+          "recognized_total": {
+            "title": "Recognized Total",
+            "type": "integer"
+          },
+          "unknown_total": {
+            "title": "Unknown Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "date_from",
+          "date_to",
+          "recognized_total",
+          "unknown_total",
+          "entries",
+          "exits",
+          "average_confidence",
+          "by_day",
+          "by_person"
+        ],
+        "title": "StatisticsOut",
+        "type": "object"
+      },
+      "SummaryOut": {
+        "properties": {
+          "date": {
+            "format": "date",
+            "title": "Date",
+            "type": "string"
+          },
+          "people_present": {
+            "title": "People Present",
+            "type": "integer"
+          },
+          "persons_registered": {
+            "title": "Persons Registered",
+            "type": "integer"
+          },
+          "recent_activity": {
+            "items": {
+              "$ref": "#/components/schemas/ActivityOut"
+            },
+            "title": "Recent Activity",
+            "type": "array"
+          },
+          "recognitions_today": {
+            "title": "Recognitions Today",
+            "type": "integer"
+          },
+          "unknown_today": {
+            "title": "Unknown Today",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "date",
+          "persons_registered",
+          "recognitions_today",
+          "people_present",
+          "unknown_today",
+          "recent_activity"
+        ],
+        "title": "SummaryOut",
+        "type": "object"
+      },
+      "UserOut": {
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_login_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Login At"
+          },
+          "role": {
+            "$ref": "#/components/schemas/UserRole"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "username",
+          "role",
+          "last_login_at"
+        ],
+        "title": "UserOut",
+        "type": "object"
+      },
+      "UserRole": {
+        "enum": [
+          "ADMIN",
+          "OPERATOR"
+        ],
+        "title": "UserRole",
+        "type": "string"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "APIKeyCookie": {
+        "description": "Cookie HttpOnly que entrega POST /api/auth/login.",
+        "in": "cookie",
+        "name": "facetrack_session",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "\nReconocimiento facial, asistencia y estadísticas con **procesamiento local**.\n\n**Autenticación.** `POST /api/auth/login` entrega una cookie de sesión HttpOnly;\nel navegador la envía sola en las demás llamadas. Todas las rutas la requieren\nsalvo `GET /api/health` y el login. Las marcadas *Solo ADMIN* exigen ese rol.\n\n**Errores.** Siempre `{\"detail\": str, \"code\": str}`; los 5xx agregan\n`request_id` (también en la cabecera `X-Request-ID` de toda respuesta), que\npermite encontrar el detalle en los logs.\n\n**Privacidad.** Las imágenes se procesan en memoria y se descartan; ninguna\nrespuesta incluye embeddings.\n",
+    "title": "FaceTrack API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/asistencia": {
+      "get": {
+        "description": "Filtros: `person_id`, `type` (ENTRY/EXIT), y `date` o `from`/`to` (días locales, incluidos).",
+        "operationId": "list_attendance_api_asistencia_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "person_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Person Id"
+            }
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/AttendanceType"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Type"
+            }
+          },
+          {
+            "description": "Un día (hora local)",
+            "in": "query",
+            "name": "date",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Un día (hora local)",
+              "title": "Date"
+            }
+          },
+          {
+            "description": "Desde (incluido, hora local)",
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Desde (incluido, hora local)",
+              "title": "From"
+            }
+          },
+          {
+            "description": "Hasta (incluido, hora local)",
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Hasta (incluido, hora local)",
+              "title": "To"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 500,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttendancePage"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "List Attendance",
+        "tags": [
+          "asistencia"
+        ]
+      }
+    },
+    "/api/asistencia/export.csv": {
+      "get": {
+        "description": "Mismos filtros que el listado, sin paginar. Fechas y horas en hora local.",
+        "operationId": "export_attendance_csv_api_asistencia_export_csv_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "person_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Person Id"
+            }
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/AttendanceType"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Type"
+            }
+          },
+          {
+            "description": "Un día (hora local)",
+            "in": "query",
+            "name": "date",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Un día (hora local)",
+              "title": "Date"
+            }
+          },
+          {
+            "description": "Desde (incluido, hora local)",
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Desde (incluido, hora local)",
+              "title": "From"
+            }
+          },
+          {
+            "description": "Hasta (incluido, hora local)",
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Hasta (incluido, hora local)",
+              "title": "To"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Export Attendance Csv",
+        "tags": [
+          "asistencia"
+        ]
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "description": "Valida usuario y contraseña y abre una sesión en una cookie HttpOnly\n(no accesible desde JavaScript). Mensaje genérico ante cualquier error de credenciales.",
+        "operationId": "login_api_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Demasiados intentos"
+          }
+        },
+        "summary": "Login",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "description": "Revoca el token actual (aunque alguien lo haya copiado, deja de servir) y borra la cookie.",
+        "operationId": "logout_api_auth_logout_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Logout",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "operationId": "me_api_auth_me_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Me",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/configuracion": {
+      "get": {
+        "operationId": "get_config_api_configuracion_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConfigOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Get Config",
+        "tags": [
+          "configuracion"
+        ]
+      },
+      "put": {
+        "description": "Reemplaza la configuración completa. Se guarda en la base y se aplica\nde inmediato (threshold, cooldown, máximo de rostros, etc.).",
+        "operationId": "update_config_api_configuracion_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RuntimeConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConfigOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Update Config",
+        "tags": [
+          "configuracion"
+        ]
+      }
+    },
+    "/api/estadisticas": {
+      "get": {
+        "operationId": "statistics_api_estadisticas_get",
+        "parameters": [
+          {
+            "description": "Por defecto, hace 6 días",
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Por defecto, hace 6 días",
+              "title": "From"
+            }
+          },
+          {
+            "description": "Por defecto, hoy",
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Por defecto, hoy",
+              "title": "To"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatisticsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Statistics",
+        "tags": [
+          "estadisticas"
+        ]
+      }
+    },
+    "/api/estadisticas/resumen": {
+      "get": {
+        "description": "Números del dashboard para hoy (hora local) y la actividad reciente.",
+        "operationId": "summary_api_estadisticas_resumen_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SummaryOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Summary",
+        "tags": [
+          "estadisticas"
+        ]
+      }
+    },
+    "/api/health": {
+      "get": {
+        "operationId": "health_api_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health",
+        "tags": [
+          "health"
+        ]
+      }
+    },
+    "/api/historial": {
+      "get": {
+        "operationId": "history_api_historial_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "person_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Person Id"
+            }
+          },
+          {
+            "description": "true = conocidos, false = desconocidos",
+            "in": "query",
+            "name": "recognized",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "true = conocidos, false = desconocidos",
+              "title": "Recognized"
+            }
+          },
+          {
+            "in": "query",
+            "name": "camera_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 64,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Id"
+            }
+          },
+          {
+            "description": "Un día (hora local)",
+            "in": "query",
+            "name": "date",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Un día (hora local)",
+              "title": "Date"
+            }
+          },
+          {
+            "description": "Desde (incluido, hora local)",
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Desde (incluido, hora local)",
+              "title": "From"
+            }
+          },
+          {
+            "description": "Hasta (incluido, hora local)",
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Hasta (incluido, hora local)",
+              "title": "To"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 500,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventPage"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "History",
+        "tags": [
+          "reconocimiento"
+        ]
+      }
+    },
+    "/api/landmarks/image": {
+      "post": {
+        "description": "Malla facial (478 puntos), apertura de ojos (EAR) y orientación de la cabeza de cada rostro.",
+        "operationId": "landmarks_api_landmarks_image_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_landmarks_api_landmarks_image_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LandmarksOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Imagen inválida o corrupta"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Archivo demasiado grande"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Formato no soportado"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Landmarks",
+        "tags": [
+          "liveness"
+        ]
+      }
+    },
+    "/api/liveness/sessions": {
+      "post": {
+        "description": "Inicia una prueba de vida con desafíos al azar. El cliente debe enviar\nframes a `/api/liveness/sessions/{id}/frames` hasta que el estado deje de\nser IN_PROGRESS (o venza el tiempo).",
+        "operationId": "create_session_api_liveness_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/LivenessCreate"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LivenessSessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Create Session",
+        "tags": [
+          "liveness"
+        ]
+      }
+    },
+    "/api/liveness/sessions/{session_id}": {
+      "get": {
+        "operationId": "get_session_api_liveness_sessions__session_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LivenessSessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Get Session",
+        "tags": [
+          "liveness"
+        ]
+      }
+    },
+    "/api/liveness/sessions/{session_id}/frames": {
+      "post": {
+        "operationId": "submit_frame_api_liveness_sessions__session_id__frames_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_submit_frame_api_liveness_sessions__session_id__frames_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LivenessFrameOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Imagen inválida o corrupta"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Archivo demasiado grande"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Formato no soportado"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Submit Frame",
+        "tags": [
+          "liveness"
+        ]
+      }
+    },
+    "/api/personas": {
+      "get": {
+        "operationId": "list_persons_api_personas_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "active",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Active"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PersonOut"
+                  },
+                  "title": "Response List Persons Api Personas Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "List Persons",
+        "tags": [
+          "personas"
+        ]
+      },
+      "post": {
+        "operationId": "create_person_api_personas_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Create Person",
+        "tags": [
+          "personas"
+        ]
+      }
+    },
+    "/api/personas/{person_id}": {
+      "delete": {
+        "operationId": "delete_person_api_personas__person_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "person_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Person Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "La persona no existe"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Delete Person",
+        "tags": [
+          "personas"
+        ]
+      },
+      "get": {
+        "operationId": "get_person_api_personas__person_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "person_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Person Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "La persona no existe"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Get Person",
+        "tags": [
+          "personas"
+        ]
+      },
+      "put": {
+        "operationId": "update_person_api_personas__person_id__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "person_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Person Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "La persona no existe"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Update Person",
+        "tags": [
+          "personas"
+        ]
+      }
+    },
+    "/api/personas/{person_id}/faces": {
+      "get": {
+        "operationId": "list_faces_api_personas__person_id__faces_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "person_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Person Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FaceSampleOut"
+                  },
+                  "title": "Response List Faces Api Personas  Person Id  Faces Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "La persona no existe"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "List Faces",
+        "tags": [
+          "personas"
+        ]
+      },
+      "post": {
+        "description": "Registra una muestra facial. Solo se guarda el embedding cifrado, nunca la imagen.",
+        "operationId": "enroll_face_api_personas__person_id__faces_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "person_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Person Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_enroll_face_api_personas__person_id__faces_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FaceEnrollmentOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Imagen inválida o corrupta"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "La persona no existe"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "El rostro no coincide con la persona o coincide con otra"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Archivo demasiado grande"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Formato no soportado"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Sin rostro, varios rostros o calidad insuficiente"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Enroll Face",
+        "tags": [
+          "personas"
+        ]
+      }
+    },
+    "/api/personas/{person_id}/faces/{face_id}": {
+      "delete": {
+        "operationId": "delete_face_api_personas__person_id__faces__face_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "person_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Person Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "face_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Face Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "La persona no existe"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Delete Face",
+        "tags": [
+          "personas"
+        ]
+      }
+    },
+    "/api/reconocimiento/image": {
+      "post": {
+        "description": "Detecta y reconoce todos los rostros de la imagen, cada uno de forma\nindependiente. Registra eventos (con cooldown) y, en modo `attendance`,\nasistencia. La imagen no se guarda.",
+        "operationId": "recognize_image_api_reconocimiento_image_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_recognize_image_api_reconocimiento_image_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecognitionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Imagen inválida o corrupta"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Archivo demasiado grande"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorOut"
+                }
+              }
+            },
+            "description": "Formato no soportado"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "APIKeyCookie": []
+          }
+        ],
+        "summary": "Recognize Image",
+        "tags": [
+          "reconocimiento"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "description": "Inicio y cierre de sesión.",
+      "name": "auth"
+    },
+    {
+      "description": "Estado del servicio (público, para healthchecks).",
+      "name": "health"
+    },
+    {
+      "description": "Personas reconocibles y sus muestras faciales.",
+      "name": "personas"
+    },
+    {
+      "description": "Reconocimiento por imagen e historial de eventos.",
+      "name": "reconocimiento"
+    },
+    {
+      "description": "Landmarks faciales y prueba de vida básica por desafíos.",
+      "name": "liveness"
+    },
+    {
+      "description": "Registros de entrada/salida y exportación CSV.",
+      "name": "asistencia"
+    },
+    {
+      "description": "Resumen del día y estadísticas por período.",
+      "name": "estadisticas"
+    },
+    {
+      "description": "Configuración editable en tiempo de ejecución.",
+      "name": "configuracion"
+    }
+  ]
+}

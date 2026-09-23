@@ -1,0 +1,16 @@
+# Contexto del build del backend (raíz del repo). Nada de secretos ni datos.
+.env
+.env.*
+!.env.example
+.git
+.venv
+venv
+.claude
+data
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+frontend
+backend/tests
+models/*.part
+Reconocimiento.py

@@ -1,0 +1,56 @@
+.message {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.challenges {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.challenges li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.done {
+  color: var(--color-success);
+}
+
+.result {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.status {
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.live {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.suspicious {
+  background: var(--color-warning-soft);
+  color: var(--color-warning);
+}
+
+.unknown {
+  background: var(--color-neutral-soft);
+  color: var(--color-text-muted);
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}

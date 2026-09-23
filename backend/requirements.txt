@@ -1,0 +1,22 @@
+# Visión y configuración (Sprints 1-2)
+mediapipe>=0.10.14
+opencv-python>=4.9
+numpy>=1.26
+pydantic>=2.6
+pydantic-settings>=2.2
+
+# Base de datos (Sprint 3)
+sqlalchemy>=2.0.30
+alembic>=1.13
+psycopg[binary]>=3.1
+cryptography>=42
+tzdata>=2024.1  # zonas horarias en Windows
+
+# API (Sprint 4)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+
+# Autenticación (Sprint 7)
+pyjwt>=2.8
+argon2-cffi>=23.1
