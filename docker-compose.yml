@@ -62,5 +62,44 @@ services:
         condition: service_healthy
     restart: unless-stopped
 
+  # HTTPS opcional (perfil "https"): Caddy delante de nginx, con certificados
+  # automáticos. Se activa con:
+  #   docker compose --profile https up -d
+  # y se configura con FACETRACK_HOSTS / FACETRACK_TLS (ver docker/caddy/Caddyfile).
+  # Con HTTPS, PUBLIC_ORIGIN debe incluir las direcciones https://… con las
+  # que se abre la app (si no, el login desde ahí se rechaza con 403).
+  https:
+    image: caddy:2.10-alpine
+    container_name: facetrack-https
+    profiles: ["https"]
+    environment:
+      FACETRACK_HOSTS: ${FACETRACK_HOSTS:-localhost}
+      FACETRACK_TLS: ${FACETRACK_TLS:-internal}
+      FACETRACK_DEFAULT_SNI: ${FACETRACK_DEFAULT_SNI:-localhost}
+    ports:
+      - "${HTTP_PORT:-80}:80"      # redirige a HTTPS (y desafíos de Let's Encrypt)
+      - "${HTTPS_PORT:-443}:443"
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data          # certificados y CA local: no borrar sin necesidad
+      - caddy_config:/config
+    depends_on:
+      frontend:
+        condition: service_healthy
+    networks:
+      default:
+        # IP fija: nginx confía en X-Forwarded-For solo si viene de acá.
+        ipv4_address: 172.30.250.10
+    restart: unless-stopped
+
+networks:
+  default:
+    # Subred fija para poder identificar al proxy HTTPS (ver frontend/nginx.conf).
+    ipam:
+      config:
+        - subnet: 172.30.250.0/24
+
 volumes:
   postgres_data:
+  caddy_data:
+  caddy_config:

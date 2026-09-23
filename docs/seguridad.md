@@ -36,6 +36,8 @@ python -m app.cli.users list | set-password <usuario> | deactivate <usuario> | a
 | Clave de firma débil | En producción, `SECRET_KEY` de 32+ caracteres es obligatoria. En desarrollo, si es débil, se usa una clave aleatoria por proceso (nunca `change_me`) |
 | Filtrar datos | Nunca se devuelven embeddings ni hashes; errores internos con mensaje genérico; `Cache-Control: no-store` en la API |
 | Clickjacking, sniffing, recursos externos | `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`; en nginx, CSP de solo recursos propios y `Permissions-Policy: camera=(self)` |
+| Inventar la IP de origen | nginx reemplaza `X-Forwarded-For` por la IP de la conexión y solo acepta la que envía el proxy HTTPS (Caddy, IP fija en la red de Compose). Así el bloqueo de login por usuario+IP no se esquiva enviando IPs falsas en esa cabecera. Limitación: en Docker Desktop todas las conexiones llegan desde la IP interna de Docker, y el bloqueo pasa a ser por usuario |
+| Tráfico en claro | Perfil `https` de Compose: TLS con Caddy, HTTP → HTTPS (308) y `Strict-Transport-Security`; con HTTPS la cookie `Secure` funciona desde otros dispositivos |
 | Contenedores | Backend y nginx sin root; código de solo lectura; el backend no publica puertos y PostgreSQL solo escucha en `127.0.0.1` |
 
 **Frontend.** Las rutas redirigen al login si no hay sesión y vuelven al destino original, solo si es una ruta interna (evita redirecciones abiertas). Si la API responde 401 (sesión vencida o cerrada), la interfaz vuelve al login. Un operador no ve las acciones de administración; la API las valida igual.

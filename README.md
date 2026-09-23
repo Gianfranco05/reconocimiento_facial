@@ -134,7 +134,38 @@ navegador ──▶ frontend (nginx :8080) ──/api──▶ backend (:8000, r
 
 Los tres tienen healthcheck y arrancan en orden: postgres → backend → frontend. Comandos útiles: `docker compose logs -f backend`, `docker compose exec backend python -m app.cli.users list`, `docker compose down`.
 
-> **HTTPS.** En Docker el backend corre en modo `production` y la cookie de sesión es `Secure`. Los navegadores la aceptan en `http://localhost`, pero para usar FaceTrack desde otra máquina hay que servirlo por HTTPS (un proxy con certificado delante del puerto 8080). Sin HTTPS el login fuera de `localhost` no funciona, y es correcto que así sea.
+### HTTPS (para usarlo desde otros dispositivos)
+
+En Docker el backend corre en modo `production` y la cookie de sesión es `Secure`. Los navegadores la aceptan en `http://localhost`, pero desde otra máquina hace falta HTTPS: sin él, el login no funciona y el navegador no deja usar la cámara (ambas cosas son correctas). Compose trae un perfil opcional `https` con [Caddy](https://caddyserver.com) delante de nginx:
+
+```
+navegador ──HTTPS :443──▶ https (Caddy) ──▶ frontend (nginx :8080) ──/api──▶ backend ──▶ postgres
+```
+
+En el `.env`, con las direcciones con las que se va a abrir la app (ejemplo para una red local; `192.168.1.34` es la IP de la máquina que corre Docker):
+
+```bash
+FACETRACK_HOSTS=localhost, 192.168.1.34
+FACETRACK_DEFAULT_SNI=192.168.1.34
+PUBLIC_ORIGIN=https://localhost,https://192.168.1.34
+```
+
+```bash
+docker compose --profile https up -d
+```
+
+Abrir **<https://192.168.1.34>** (el puerto 80 redirige a HTTPS).
+
+- **Red interna (`FACETRACK_TLS=internal`, por defecto).** Caddy crea su propia autoridad certificante y firma los certificados. Hay que instalar su certificado raíz, **una vez por dispositivo**, como autoridad de confianza (en Windows: "Entidades de certificación raíz de confianza"; en Android/iOS: instalar y habilitar el certificado de CA). Para exportarlo:
+
+  ```bash
+  docker compose cp https:/data/caddy/pki/authorities/local/root.crt ./facetrack-root.crt
+  ```
+
+  La CA vive en el volumen `caddy_data`: si se borra (`down -v`), se genera otra y hay que reinstalarla. Al entrar por IP, `FACETRACK_DEFAULT_SNI` debe ser esa IP (los navegadores no envían el nombre del sitio al conectarse por IP).
+- **Dominio público (`FACETRACK_TLS=tu@email.com`).** Certificados de Let's Encrypt; requiere que el dominio apunte a la máquina y que los puertos 80 y 443 sean accesibles desde internet. Este modo **no está probado** en este proyecto.
+- `PUBLIC_ORIGIN` debe listar cada `https://…` usado: el backend rechaza (403) los logins desde otros orígenes. `HTTP_PORT` / `HTTPS_PORT` cambian los puertos publicados.
+- El puerto 8080 (HTTP) sigue publicado para uso en la propia máquina; `FRONTEND_PORT=127.0.0.1:8080` lo limita a ella.
 
 ## Variables de entorno
 
@@ -181,6 +212,8 @@ Se leen de `.env` (ver [.env.example](.env.example)). Un valor fuera de rango ha
 | **Docker Compose** | | |
 | `FRONTEND_PORT` / `PUBLIC_ORIGIN` | `8080` / `http://localhost:8080` | Puerto publicado y dirección con la que se abre la app |
 | `DOCKER_ENVIRONMENT` | `production` | `ENVIRONMENT` del backend en Docker |
+| `FACETRACK_HOSTS` / `FACETRACK_TLS` / `FACETRACK_DEFAULT_SNI` | `localhost` / `internal` / `localhost` | Perfil `https`: direcciones del sitio, tipo de certificado y certificado por defecto (ver [HTTPS](#https-para-usarlo-desde-otros-dispositivos)) |
+| `HTTP_PORT` / `HTTPS_PORT` | `80` / `443` | Perfil `https`: puertos publicados por Caddy |
 | `POSTGRES_USER` / `POSTGRES_PASSWORD` | `postgres` / `postgres` | Credenciales de la base (cambiarlas fuera de una prueba local) |
 
 ## Ejecución local
@@ -343,7 +376,7 @@ Detalle y medidas de seguridad: [docs/seguridad.md](docs/seguridad.md).
 - **Probado sin webcam real.** El parpadeo, la orientación de la cabeza y la cámara del navegador se probaron con fotos reales modificadas y una cámara simulada. Tampoco se probó en un teléfono real.
 - **Un solo proceso.** La galería en memoria, el cooldown, las sesiones de liveness y el bloqueo por intentos de login viven en el proceso: la API debe correr con un worker. Si se registran rostros por consola con la API corriendo, hay que reiniciarla.
 - **Detección a distancia.** Los landmarks (MediaPipe) solo ven rostros cercanos; una segunda persona lejos puede no detectarse durante el liveness.
-- **Infraestructura.** Sin HTTPS incluido (hace falta un proxy con certificado para usarlo en red). La imagen del backend pesa ~1,6 GB por OpenCV y MediaPipe. No hay rotación de la clave de cifrado.
+- **Infraestructura.** El HTTPS incluido usa una CA local cuyo certificado raíz hay que instalar en cada dispositivo; el modo Let's Encrypt no está probado. En Docker Desktop (Windows/Mac) todas las conexiones llegan con la IP interna de Docker, así que el bloqueo de login actúa por usuario y no por usuario+IP: alguien puede bloquear 5 minutos la cuenta de otro fallando a propósito (en Linux se suele conservar la IP real; no probado). La imagen del backend pesa ~1,6 GB por OpenCV y MediaPipe. No hay rotación de la clave de cifrado.
 - **Gestión de usuarios solo por consola** (no hay pantalla de administración de usuarios).
 - **Zona horaria.** Los filtros de fecha usan la zona del servidor y las horas se muestran con la del navegador; en uso local coinciden.
 
@@ -358,7 +391,8 @@ Detalle y medidas de seguridad: [docs/seguridad.md](docs/seguridad.md).
 - [x] **Sprint 7 — Seguridad:** autenticación, roles, cookies, CORS, validación, límites de upload.
 - [x] **Sprint 8 — Docker:** Dockerfiles, Compose, healthchecks.
 - [x] **Sprint 9 — Calidad:** cobertura de tests, lint, manejo de errores, logs con id de request, documentación de la API, README.
+- [x] **Mejora — HTTPS en Docker:** perfil `https` con Caddy (CA local o Let's Encrypt) y corrección de la IP del cliente detrás de los proxies.
 
-**Próximos pasos posibles:** capturas de Reconocimiento y Liveness con una webcam real; calibrar los umbrales con la cámara de uso; HTTPS en Compose; pantalla de administración de usuarios; estado compartido (p. ej. Redis) para correr varios workers.
+**Próximos pasos posibles:** capturas de Reconocimiento y Liveness con una webcam real; calibrar los umbrales con la cámara de uso; probar el modo Let's Encrypt con un dominio real; pantalla de administración de usuarios; estado compartido (p. ej. Redis) para correr varios workers.
 
 **Fuera de alcance de la V1:** emociones, edad, género, voz, múltiples cámaras simultáneas, notificaciones, app móvil, despliegue en la nube.
