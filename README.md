@@ -21,6 +21,7 @@ Detecta y reconoce rostros en tiempo real desde la cámara del navegador, distin
 - [Privacidad](#privacidad)
 - [Limitaciones](#limitaciones)
 - [Roadmap](#roadmap)
+- [License](#license)
 
 Documentación detallada: [visión y liveness](docs/vision.md) · [API](docs/api.md) · [seguridad y privacidad](docs/seguridad.md) · [desarrollo](docs/desarrollo.md)
 
@@ -396,3 +397,16 @@ Detalle y medidas de seguridad: [docs/seguridad.md](docs/seguridad.md).
 **Próximos pasos posibles:** capturas de Reconocimiento y Liveness con una webcam real; calibrar los umbrales con la cámara de uso; probar el modo Let's Encrypt con un dominio real; pantalla de administración de usuarios; estado compartido (p. ej. Redis) para correr varios workers.
 
 **Fuera de alcance de la V1:** emociones, edad, género, voz, múltiples cámaras simultáneas, notificaciones, app móvil, despliegue en la nube.
+
+## License
+
+Copyright (c) 2026 Gianfranco Canciani. FaceTrack se publica bajo una **licencia propia de uso no comercial y sin redistribución** (ver [`LICENSE`](LICENSE)). **No** es una licencia de código abierto.
+
+- **Permitido:** ver, descargar, ejecutar, estudiar y **modificar** el código para fines **personales, educativos o de investigación**, sin fines comerciales, y hacer las copias locales necesarias para eso.
+- **No permitido sin autorización expresa y por escrito del autor:** distribuir copias a terceros (aunque sea gratis o en privado), redistribuir el código públicamente, publicar forks o versiones modificadas como proyectos independientes, vender el proyecto o una versión modificada, sublicenciarlo, ofrecerlo como SaaS o servicio, y **cualquier uso comercial**, incluido el uso interno en una empresa.
+- **Modificar no habilita a distribuir:** las versiones modificadas solo pueden usarse para esos mismos fines y siguen sujetas a la licencia.
+- Hay que conservar el aviso de copyright y el archivo `LICENSE`, y no se puede presentar el proyecto como propio.
+
+Para uso comercial, distribución a terceros o cualquier otro uso no previsto, contactar al autor a través de [GitHub](https://github.com/Gianfranco05).
+
+Las dependencias, los modelos preentrenados (OpenCV Zoo, MediaPipe) y las imágenes de prueba de terceros conservan sus propias licencias.

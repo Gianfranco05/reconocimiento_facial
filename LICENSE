@@ -1,0 +1,308 @@
+LICENCIA DE USO NO COMERCIAL Y SIN REDISTRIBUCIÓN DE FACETRACK
+Versión 1.0
+
+Copyright (c) 2026 Gianfranco Canciani.
+Todos los derechos reservados, salvo los que esta licencia concede de forma
+expresa.
+
+Esta NO es una licencia de código abierto ("open source"). El código fuente
+es visible, pero su uso está limitado a lo que se describe a continuación.
+Cualquier uso no permitido expresamente en esta licencia requiere una
+autorización expresa y por escrito del Autor.
+
+
+1. DEFINICIONES
+
+1.1. "Autor": Gianfranco Canciani, titular de los derechos de autor sobre el
+     Software.
+
+1.2. "Software": el código fuente, la documentación, los archivos de
+     configuración, las imágenes y demás materiales de este repositorio cuya
+     autoría corresponde al Autor, en cualquiera de sus versiones, completos o
+     en parte, en forma de código fuente o en cualquier forma compilada,
+     empaquetada o ejecutable (por ejemplo, imágenes de Docker). No incluye
+     los Componentes de terceros (sección 11).
+
+1.3. "Usted": la persona que obtiene, usa o modifica el Software. Si actúa en
+     nombre de una institución educativa o de investigación sin fines de
+     lucro, "Usted" incluye a esa institución.
+
+1.4. "Tercero": cualquier persona física o jurídica distinta de Usted. Cuando
+     Usted es una institución educativa o de investigación, sus integrantes
+     que utilizan el Software dentro de una misma actividad de Uso Permitido
+     no se consideran Terceros entre sí.
+
+1.5. "Obra Derivada": cualquier modificación, adaptación, traducción (a otro
+     idioma o a otro lenguaje de programación), reescritura, ampliación o
+     combinación del Software, y cualquier obra que incorpore el Software o
+     partes de él, sin importar el grado de modificación.
+
+1.6. "Uso Personal": el uso que hace una persona física para sus propios
+     fines privados, sin obtener ningún beneficio económico.
+
+1.7. "Uso Educativo": el uso para enseñar o aprender, dentro de estudios,
+     cursos, clases o prácticas sin fines comerciales.
+
+1.8. "Uso de Investigación": el uso para investigación académica o
+     independiente sin fines comerciales, incluida la publicación de sus
+     resultados.
+
+1.9. "Uso Permitido": el Uso Personal, el Uso Educativo y el Uso de
+     Investigación, siempre que no constituyan Uso Comercial.
+
+1.10. "Uso Comercial": cualquier uso destinado a obtener, o que produzca, una
+      ventaja comercial o una compensación económica, directa o indirecta,
+      para Usted o para otra persona. Incluye, entre otros:
+      a) vender, alquilar o licenciar el Software o una Obra Derivada;
+      b) incorporar el Software o una Obra Derivada en productos o servicios
+         comerciales;
+      c) ofrecer el Software o una Obra Derivada como servicio en línea
+         (SaaS), servicio alojado, servicio pago o producto comercial;
+      d) prestar servicios pagos (instalación, consultoría, desarrollo,
+         soporte o personalización) basados en el Software o en una Obra
+         Derivada;
+      e) usar el Software o una Obra Derivada en la operación de una empresa
+         u organización con fines de lucro, incluso de forma interna (por
+         ejemplo, para controlar la asistencia de empleados o el acceso de
+         clientes o visitantes);
+      f) dictar cursos o capacitaciones pagas cuyo contenido principal sea el
+         Software;
+      g) obtener ingresos por publicidad, suscripciones o donaciones
+         condicionadas al acceso al Software o a una Obra Derivada.
+
+1.11. "Distribuir": entregar, transferir, compartir, publicar, subir o poner
+      a disposición de un Tercero, por cualquier medio (repositorios,
+      sitios web, registros de paquetes o de imágenes de contenedores,
+      almacenamiento en la nube, correo, mensajería, dispositivos físicos u
+      otros), de forma pública o privada, gratuita u onerosa, una copia total
+      o parcial del Software o de una Obra Derivada.
+
+1.12. "Repositorio oficial": el repositorio publicado por el Autor
+      (https://github.com/Gianfranco05/reconocimiento_facial) o el que el
+      Autor indique en el futuro.
+
+
+2. PERMISOS CONCEDIDOS
+
+Siempre que cumpla con todas las condiciones de esta licencia, el Autor le
+concede una licencia gratuita, no exclusiva, intransferible, no
+sublicenciable y revocable según la sección 13, que le permite, únicamente
+para un Uso Permitido:
+
+  a) ver el código fuente y estudiar cómo funciona el Software;
+  b) descargar o clonar el Software desde el Repositorio oficial;
+  c) ejecutar el Software localmente, en dispositivos o servidores bajo su
+     control;
+  d) modificar el código fuente y crear Obras Derivadas (sección 3);
+  e) hacer las copias locales necesarias para esos usos (copias de trabajo,
+     copias de seguridad, imágenes de contenedores construidas y usadas
+     localmente);
+  f) usar el Software como referencia educativa y citar fragmentos breves del
+     código en trabajos académicos, clases o publicaciones de investigación,
+     con la atribución de la sección 8, siempre que los fragmentos citados no
+     constituyan una parte sustancial del Software ni permitan reconstruirlo
+     o ejecutarlo;
+  g) compartir el enlace al Repositorio oficial. Compartir el enlace no es
+     Distribuir.
+
+Permitir que otras personas interactúen con el Software en ejecución (por
+ejemplo, compañeros de clase o participantes de un estudio que se registran
+en el sistema) está permitido solo dentro de una actividad de Uso Permitido
+organizada por Usted, sin entregarles copias del Software y sin ofrecerles el
+Software como servicio (sección 6).
+
+
+3. MODIFICACIONES
+
+3.1. Puede modificar el Software y crear Obras Derivadas solo para un Uso
+     Permitido.
+
+3.2. Modificar el Software NO le otorga permiso para Distribuir sus
+     modificaciones ni para usarlas con fines comerciales. Esto se aplica sin
+     importar cuánto haya modificado el Software, incluso si lo reescribió en
+     gran parte, lo tradujo a otro lenguaje o usó solo una parte del código.
+
+3.3. Toda Obra Derivada queda sujeta a esta licencia. Usted no adquiere
+     derechos para usarla de una manera distinta a la permitida aquí.
+
+3.4. Las Obras Derivadas deben conservar el aviso de copyright y este archivo
+     de licencia (sección 8).
+
+
+4. DISTRIBUCIÓN Y REDISTRIBUCIÓN
+
+4.1. Sin la autorización expresa y por escrito del Autor, queda prohibido:
+  a) Distribuir copias del Software, sin modificar o modificado, a
+     cualquier Tercero, aunque sea de forma privada o gratuita;
+  b) redistribuir públicamente el código fuente del Software (por ejemplo,
+     subiéndolo a otro repositorio, sitio web, registro de paquetes o
+     espejo);
+  c) publicar forks, copias o versiones modificadas del Software como
+     proyectos independientes, o ponerlos a disposición de Terceros;
+  d) publicar o entregar a Terceros imágenes de Docker, ejecutables,
+     paquetes o instaladores construidos a partir del Software o de una Obra
+     Derivada;
+  e) sublicenciar el Software, o ceder o transferir esta licencia o
+     cualquiera de los derechos que concede.
+
+4.2. Forks en GitHub. Mientras el Repositorio oficial sea público en GitHub,
+     los Términos de Servicio de GitHub permiten a sus usuarios ver el
+     repositorio y hacer un fork dentro de la plataforma. Esta licencia no
+     restringe ese derecho mínimo, pero tampoco lo amplía:
+  a) un fork en GitHub no otorga ningún derecho de uso distinto de los de
+     esta licencia;
+  b) un fork no puede presentarse, promocionarse ni mantenerse como un
+     proyecto independiente, ni usarse para Distribuir Obras Derivadas;
+  c) publicar cambios en un fork solo se admite con el fin de proponer
+     contribuciones al Repositorio oficial (por ejemplo, mediante un pull
+     request), según la sección 10.
+
+
+5. USO COMERCIAL
+
+5.1. Queda prohibido todo Uso Comercial del Software y de las Obras
+     Derivadas sin la autorización expresa y por escrito del Autor. En
+     particular, queda prohibido:
+  a) vender el Software o una versión modificada;
+  b) incorporar el código, total o parcialmente, en productos o servicios
+     comerciales;
+  c) ofrecer el Software o una versión modificada como SaaS, servicio pago
+     o producto comercial;
+  d) utilizar el Software o sus modificaciones con cualquier otro fin
+     comercial, según la definición de la sección 1.10.
+
+5.2. Quien quiera hacer un Uso Comercial del Software debe contactar al
+     Autor (sección 9) para acordar una licencia comercial por separado.
+
+
+6. SERVICIOS EN RED
+
+Sin la autorización expresa y por escrito del Autor, queda prohibido ofrecer
+el Software o una Obra Derivada como servicio accesible por Terceros a
+través de una red (SaaS, servicio alojado, API pública o similar), sea pago o
+gratuito, salvo el caso previsto en el último párrafo de la sección 2.
+
+
+7. OTRAS RESTRICCIONES
+
+Queda prohibido, sin la autorización expresa y por escrito del Autor:
+  a) presentar el Software o una Obra Derivada como obra propia, incluidos
+     los trabajos académicos, proyectos finales o portfolios en los que no
+     se indique claramente la autoría del Autor según la sección 8;
+  b) registrar el Software o una Obra Derivada a su nombre, o a nombre de un
+     Tercero, ante cualquier registro de propiedad intelectual o industrial;
+  c) eliminar, ocultar o modificar los avisos de copyright, de autoría o de
+     licencia del Software, incluido este archivo;
+  d) usar el nombre del Autor para promocionar o respaldar productos,
+     servicios u Obras Derivadas.
+
+
+8. ATRIBUCIÓN Y COPYRIGHT
+
+8.1. Todas las copias del Software y todas las Obras Derivadas, incluidas las
+     copias locales, deben conservar sin cambios:
+  a) el aviso "Copyright (c) 2026 Gianfranco Canciani";
+  b) este archivo LICENSE, completo.
+
+8.2. Cuando use el Software como referencia en un trabajo académico, una
+     clase o una publicación de investigación, debe citar al Autor y el
+     Repositorio oficial.
+
+
+9. AUTORIZACIONES Y CONTACTO
+
+9.1. Cualquier uso no permitido expresamente por esta licencia requiere una
+     autorización previa, expresa y por escrito del Autor, que identifique
+     el uso autorizado. El silencio o la falta de respuesta del Autor no
+     constituyen una autorización. Que el Autor no exija el cumplimiento de
+     esta licencia en un caso no implica una renuncia a sus derechos.
+
+9.2. Para solicitar autorizaciones, incluidas las de Uso Comercial o
+     Distribución a Terceros, contacte al Autor a través de su perfil de
+     GitHub: https://github.com/Gianfranco05
+
+
+10. CONTRIBUCIONES
+
+Si envía al Autor una contribución destinada al Repositorio oficial (por
+ejemplo, un pull request, un parche o una sugerencia de código), declara que
+tiene derecho a hacerlo y concede al Autor una licencia perpetua, mundial,
+gratuita, irrevocable y no exclusiva para usar, copiar, modificar,
+distribuir, sublicenciar y explotar comercialmente esa contribución como
+parte del Software o por separado. Enviar una contribución no le otorga
+derechos adicionales sobre el Software.
+
+
+11. COMPONENTES DE TERCEROS
+
+Esta licencia se aplica solo al trabajo del Autor. No se aplica a los
+siguientes componentes, que conservan sus propias licencias y titulares:
+  a) las bibliotecas y dependencias de Python y de npm, y las imágenes base
+     de Docker (por ejemplo, PostgreSQL, nginx y Caddy);
+  b) los modelos de visión preentrenados de OpenCV Zoo (YuNet, SFace) y de
+     MediaPipe, incluido el archivo models/blaze_face_short_range.tflite;
+  c) las imágenes de prueba de backend/tests/fixtures (retratos oficiales de
+     dominio público y la imagen de ejemplo de OpenCV).
+
+Esta licencia no otorga derechos sobre esos componentes ni restringe los
+derechos que conceden sus propias licencias. Usarlos según sus licencias no
+otorga ningún derecho sobre el Software.
+
+
+12. DATOS PERSONALES Y USO RESPONSABLE
+
+El Software procesa imágenes de rostros y datos biométricos. Usted es el
+único responsable de usarlo conforme a la ley aplicable, incluidas las normas
+de protección de datos personales y la obtención del consentimiento de las
+personas cuyos rostros se procesen. Esta licencia no autoriza ningún uso
+ilícito del Software.
+
+
+13. TERMINACIÓN
+
+13.1. Esta licencia termina automáticamente, sin necesidad de aviso, si
+      Usted incumple cualquiera de sus condiciones.
+
+13.2. Al terminar la licencia, debe dejar de usar el Software y las Obras
+      Derivadas, y eliminar todas las copias que tenga, salvo que el Autor
+      restablezca la licencia por escrito.
+
+13.3. Las secciones 3.2, 4, 5, 6, 7, 8, 10, 14 y 15 siguen vigentes después
+      de la terminación.
+
+
+14. DESCARGO DE GARANTÍAS
+
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍAS DE NINGÚN TIPO,
+EXPRESAS O IMPLÍCITAS, INCLUIDAS, ENTRE OTRAS, LAS GARANTÍAS DE
+COMERCIABILIDAD, IDONEIDAD PARA UN FIN DETERMINADO, EXACTITUD Y NO
+INFRACCIÓN. EN PARTICULAR, EL AUTOR NO GARANTIZA QUE EL RECONOCIMIENTO
+FACIAL, LA DETECCIÓN DE PRUEBA DE VIDA (LIVENESS) O EL REGISTRO DE
+ASISTENCIA SEAN EXACTOS, NI QUE EL SOFTWARE SEA ADECUADO PARA USOS DE
+SEGURIDAD, CONTROL DE ACCESO O IDENTIFICACIÓN DE PERSONAS. USTED ASUME TODO
+EL RIESGO DERIVADO DE SU USO.
+
+
+15. LIMITACIÓN DE RESPONSABILIDAD
+
+EN LA MEDIDA MÁXIMA PERMITIDA POR LA LEY, EL AUTOR NO SERÁ RESPONSABLE POR
+NINGÚN DAÑO, DIRECTO, INDIRECTO, INCIDENTAL, ESPECIAL O CONSECUENTE,
+INCLUIDAS LA PÉRDIDA DE DATOS, LOS ERRORES DE IDENTIFICACIÓN Y LOS
+INCUMPLIMIENTOS DE NORMAS DE PROTECCIÓN DE DATOS, QUE SURJA DEL USO O DE LA
+IMPOSIBILIDAD DE USO DEL SOFTWARE O DE LAS OBRAS DERIVADAS, AUN SI SE LE
+HUBIERA ADVERTIDO DE LA POSIBILIDAD DE TALES DAÑOS.
+
+
+16. DISPOSICIONES FINALES
+
+16.1. Reserva de derechos. El Autor se reserva todos los derechos que esta
+      licencia no concede de forma expresa, incluido el de otorgar otras
+      licencias, comerciales o no, sobre el Software.
+
+16.2. Divisibilidad. Si alguna disposición de esta licencia resultara
+      inválida o inaplicable, las demás seguirán vigentes, y la disposición
+      afectada se interpretará en el sentido más cercano a su intención
+      original que resulte válido.
+
+16.3. Interpretación. Ante cualquier duda sobre si un uso está permitido, se
+      considerará no permitido hasta que el Autor lo autorice por escrito.
