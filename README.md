@@ -403,10 +403,11 @@ Detalle y medidas de seguridad: [docs/seguridad.md](docs/seguridad.md).
 Copyright (c) 2026 Gianfranco Canciani. FaceTrack se publica bajo una **licencia propia de uso no comercial y sin redistribución** (ver [`LICENSE`](LICENSE)). **No** es una licencia de código abierto.
 
 - **Permitido:** ver, descargar, ejecutar, estudiar y **modificar** el código para fines **personales, educativos o de investigación**, sin fines comerciales, y hacer las copias locales necesarias para eso.
+- **Instituciones educativas y otras organizaciones:** cualquier escuela, universidad, instituto o academia (pública o privada), empresa u organismo que quiera usar FaceTrack como sistema propio (por ejemplo, para tomar asistencia o controlar accesos) necesita una **licencia institucional paga**. La instalación y la personalización las hace el autor. Estudiar el código o mostrarlo en una clase sigue siendo libre para estudiantes y docentes.
 - **No permitido sin autorización expresa y por escrito del autor:** distribuir copias a terceros (aunque sea gratis o en privado), redistribuir el código públicamente, publicar forks o versiones modificadas como proyectos independientes, vender el proyecto o una versión modificada, sublicenciarlo, ofrecerlo como SaaS o servicio, y **cualquier uso comercial**, incluido el uso interno en una empresa.
 - **Modificar no habilita a distribuir:** las versiones modificadas solo pueden usarse para esos mismos fines y siguen sujetas a la licencia.
 - Hay que conservar el aviso de copyright y el archivo `LICENSE`, y no se puede presentar el proyecto como propio.
 
-Para uso comercial, distribución a terceros o cualquier otro uso no previsto, contactar al autor a través de [GitHub](https://github.com/Gianfranco05).
+Para uso comercial, licencias institucionales (con instalación y personalización), distribución a terceros o cualquier otro uso no previsto, contactar al autor a través de [GitHub](https://github.com/Gianfranco05).
 
 Las dependencias, los modelos preentrenados (OpenCV Zoo, MediaPipe) y las imágenes de prueba de terceros conservan sus propias licencias.

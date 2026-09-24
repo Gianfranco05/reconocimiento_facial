@@ -1,5 +1,5 @@
 LICENCIA DE USO NO COMERCIAL Y SIN REDISTRIBUCIÓN DE FACETRACK
-Versión 1.0
+Versión 1.1
 
 Copyright (c) 2026 Gianfranco Canciani.
 Todos los derechos reservados, salvo los que esta licencia concede de forma
@@ -23,14 +23,11 @@ autorización expresa y por escrito del Autor.
      empaquetada o ejecutable (por ejemplo, imágenes de Docker). No incluye
      los Componentes de terceros (sección 11).
 
-1.3. "Usted": la persona que obtiene, usa o modifica el Software. Si actúa en
-     nombre de una institución educativa o de investigación sin fines de
-     lucro, "Usted" incluye a esa institución.
+1.3. "Usted": la persona física que obtiene, usa o modifica el Software.
 
-1.4. "Tercero": cualquier persona física o jurídica distinta de Usted. Cuando
-     Usted es una institución educativa o de investigación, sus integrantes
-     que utilizan el Software dentro de una misma actividad de Uso Permitido
-     no se consideran Terceros entre sí.
+1.4. "Tercero": cualquier persona física o jurídica distinta de Usted,
+     incluidas las instituciones y organizaciones de las que Usted forme
+     parte y sus demás integrantes.
 
 1.5. "Obra Derivada": cualquier modificación, adaptación, traducción (a otro
      idioma o a otro lenguaje de programación), reescritura, ampliación o
@@ -40,15 +37,19 @@ autorización expresa y por escrito del Autor.
 1.6. "Uso Personal": el uso que hace una persona física para sus propios
      fines privados, sin obtener ningún beneficio económico.
 
-1.7. "Uso Educativo": el uso para enseñar o aprender, dentro de estudios,
-     cursos, clases o prácticas sin fines comerciales.
+1.7. "Uso Educativo": el uso que hace un estudiante o un docente para
+     aprender o enseñar, dentro de estudios, cursos, clases o prácticas sin
+     fines comerciales (por ejemplo, estudiar el código, hacer ejercicios o
+     mostrar su funcionamiento en una clase). No incluye el Uso
+     Institucional.
 
 1.8. "Uso de Investigación": el uso para investigación académica o
      independiente sin fines comerciales, incluida la publicación de sus
      resultados.
 
 1.9. "Uso Permitido": el Uso Personal, el Uso Educativo y el Uso de
-     Investigación, siempre que no constituyan Uso Comercial.
+     Investigación, siempre que no constituyan Uso Comercial ni Uso
+     Institucional.
 
 1.10. "Uso Comercial": cualquier uso destinado a obtener, o que produzca, una
       ventaja comercial o una compensación económica, directa o indirecta,
@@ -81,6 +82,23 @@ autorización expresa y por escrito del Autor.
       (https://github.com/Gianfranco05/reconocimiento_facial) o el que el
       Autor indique en el futuro.
 
+1.13. "Institución Educativa": cualquier establecimiento o entidad que
+      imparta enseñanza o capacitación (escuela, colegio, instituto,
+      universidad, academia u otro), público o privado, con o sin fines de
+      lucro, reconocido oficialmente o no.
+
+1.14. "Uso Institucional": el uso del Software o de una Obra Derivada por
+      una Institución Educativa o cualquier otra institución u organización
+      (empresa, organismo público, entidad sin fines de lucro u otra), o en
+      su nombre, como parte de sus actividades. Incluye, entre otros, usarlo
+      para controlar la asistencia de estudiantes, docentes o personal,
+      controlar el acceso a sus instalaciones o registrar los rostros de sus
+      integrantes, ya sea que lo ponga en funcionamiento el personal de la
+      institución o cualquier otra persona. No es Uso Institucional el Uso
+      Educativo de estudiantes y docentes descripto en la sección 1.7,
+      siempre que no implique poner el Software en funcionamiento como
+      sistema de la institución.
+
 
 2. PERMISOS CONCEDIDOS
 
@@ -106,10 +124,11 @@ para un Uso Permitido:
      Distribuir.
 
 Permitir que otras personas interactúen con el Software en ejecución (por
-ejemplo, compañeros de clase o participantes de un estudio que se registran
-en el sistema) está permitido solo dentro de una actividad de Uso Permitido
-organizada por Usted, sin entregarles copias del Software y sin ofrecerles el
-Software como servicio (sección 6).
+ejemplo, compañeros de clase durante una demostración o participantes de un
+estudio que se registran en el sistema) está permitido solo dentro de una
+actividad de Uso Permitido organizada por Usted, sin entregarles copias del
+Software, sin ofrecerles el Software como servicio (sección 6) y sin que
+constituya un Uso Institucional (sección 5.3).
 
 
 3. MODIFICACIONES
@@ -174,6 +193,16 @@ Software como servicio (sección 6).
 5.2. Quien quiera hacer un Uso Comercial del Software debe contactar al
      Autor (sección 9) para acordar una licencia comercial por separado.
 
+5.3. Uso Institucional. Toda Institución Educativa, cualquiera sea (pública
+     o privada, con o sin fines de lucro), y toda otra institución u
+     organización que quiera hacer un Uso Institucional del Software o de
+     una Obra Derivada debe obtener antes una licencia institucional del
+     Autor. La licencia institucional es paga, salvo que el Autor acuerde
+     otra cosa por escrito. La instalación, la configuración y la
+     personalización del Software para una institución las realiza el Autor
+     o quien el Autor autorice por escrito. Para solicitarla, contacte al
+     Autor (sección 9).
+
 
 6. SERVICIOS EN RED
 
@@ -217,9 +246,9 @@ Queda prohibido, sin la autorización expresa y por escrito del Autor:
      constituyen una autorización. Que el Autor no exija el cumplimiento de
      esta licencia en un caso no implica una renuncia a sus derechos.
 
-9.2. Para solicitar autorizaciones, incluidas las de Uso Comercial o
-     Distribución a Terceros, contacte al Autor a través de su perfil de
-     GitHub: https://github.com/Gianfranco05
+9.2. Para solicitar autorizaciones, incluidas las de Uso Comercial, Uso
+     Institucional o Distribución a Terceros, contacte al Autor a través de
+     su perfil de GitHub: https://github.com/Gianfranco05
 
 
 10. CONTRIBUCIONES
@@ -254,8 +283,9 @@ otorga ningún derecho sobre el Software.
 El Software procesa imágenes de rostros y datos biométricos. Usted es el
 único responsable de usarlo conforme a la ley aplicable, incluidas las normas
 de protección de datos personales y la obtención del consentimiento de las
-personas cuyos rostros se procesen. Esta licencia no autoriza ningún uso
-ilícito del Software.
+personas cuyos rostros se procesen (en el caso de menores de edad, el de sus
+padres, madres o tutores). Esta licencia no autoriza ningún uso ilícito del
+Software.
 
 
 13. TERMINACIÓN
